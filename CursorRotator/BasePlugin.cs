@@ -64,7 +64,7 @@ class CursorController_Update_Patch
 
         if (closest == null)
         {
-            cursor.cursorTransform.rotation = Quaternion.identity;
+            cursor.cursorTransform.localRotation = Quaternion.identity;
             return;
         }
 
@@ -75,6 +75,6 @@ class CursorController_Update_Patch
 
         angle -= 90f;
 
-        cursor.cursorTransform.rotation = Quaternion.Euler(0f, 0f, angle);
+        cursor.cursorTransform.localRotation = Quaternion.Euler(0f, 0f, angle);
     }
 }
