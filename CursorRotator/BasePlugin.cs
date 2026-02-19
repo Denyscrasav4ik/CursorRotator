@@ -73,9 +73,8 @@ class CursorController_Update_Patch
         Vector3 direction = worldCenter - cursorPos;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-        // Check world Y rotation before subtracting 90
         float worldY = cursor.cursorTransform.eulerAngles.y;
-        if (worldY < 147f || worldY >= 328f)
+        if (worldY <= 90f || worldY >= 270f)
         {
             angle -= 90f;
         }
