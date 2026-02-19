@@ -4,7 +4,7 @@ using BepInEx.Configuration;
 using HarmonyLib;
 using UnityEngine;
 
-[BepInPlugin("denyscrasav4ik.basicallyukrainian.cursorrotator", "Cursor Rotator", "1.0.1")]
+[BepInPlugin("denyscrasav4ik.basicallyukrainian.cursorrotator", "Cursor Rotator", "1.0.2")]
 public class CursorRotatorPlugin : BaseUnityPlugin
 {
     internal static ConfigEntry<float> MaxDistanceConfig;
@@ -73,7 +73,16 @@ class CursorController_Update_Patch
         Vector3 direction = worldCenter - cursorPos;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-        angle -= 90f;
+        // Check world Y rotation before subtracting 90
+        float worldY = cursor.cursorTransform.eulerAngles.y;
+        if (worldY < 147f || worldY >= 328f)
+        {
+            angle -= 90f;
+        }
+        else
+        {
+            angle += 90f;
+        }
 
         cursor.cursorTransform.localRotation = Quaternion.Euler(0f, 0f, angle);
     }
