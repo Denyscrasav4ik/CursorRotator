@@ -1,4 +1,4 @@
-# Baldi's Basics Plus Cursor Rotator
+# Baldi's Basics Plus + Classic Remastered Cursor Rotator
 
 ## 📝 Functionality
 
